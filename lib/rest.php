@@ -50,6 +50,10 @@
                     if(isset(ALLOWED_FILES[$file['type']])){
                         $fileName   = $this->getNewFileName($file['name'], $file['type']);
                         $data       = file_get_contents($file['tmp_name']);
+                        if (!is_dir(FILE_DIR)) {
+                            // dir doesn't exist, make it
+                            mkdir(FILE_DIR);
+                        }
                         if(file_put_contents(FILE_DIR.$fileName, $data ) !== false){
                             $this->files[] = $fileName;
                             $return = true;
@@ -140,6 +144,10 @@
         private function setLog($text){
             $log    = date('G:i:s').":\t".$text."\n";
             $path   = LOG_FOLDER.'Log-'.date('Y-m-d',time()).'.txt';
+            if (!is_dir(LOG_FOLDER)) {
+                // dir doesn't exist, make it
+                mkdir(LOG_FOLDER);
+              }
             file_put_contents($path, $log, FILE_APPEND);
         }
 

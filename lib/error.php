@@ -9,13 +9,17 @@
             $this->errorText    = "ERROR LOG ".date('Y-m-d H:i:s', time());
             $this->filename     = LOG_FOLDER.date('Y-m-d',time()).'-'.$filename.'.txt';
             $this->isError      = false;
+            if (!is_dir(LOG_FOLDER)) {
+                // dir doesn't exist, make it
+                mkdir(LOG_FOLDER);
+            }
         }
 
         public function errorLog($text, $http_code){
             $this->isError  = true;
             $newFile        = false;
             $errorText      = "Time: ".date('H:i:s',time())."\n".$text;
-            $errorText      .= "\nPOST/GET Var:".json_encode(array($_POST,$_GET));
+            $errorText      .= "\nPOST/GET Var:".json_encode(array($_POST,$_GET));            
             if(file_exists($this->filename) == false){
                 file_put_contents($this->filename,"");
                 $newFile = true;
