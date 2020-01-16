@@ -1,0 +1,6 @@
+.vscode
+logs/*
+uploads/*
+
+!logs/.gitkeep
+!uploads/.gitkeep
