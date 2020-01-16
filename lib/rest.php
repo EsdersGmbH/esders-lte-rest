@@ -52,7 +52,7 @@
                         $data       = file_get_contents($file['tmp_name']);
                         if (!is_dir(FILE_DIR)) {
                             // dir doesn't exist, make it
-                            mkdir(FILE_DIR);
+                            mkdir(FILE_DIR, 0777, true);
                         }
                         if(file_put_contents(FILE_DIR.$fileName, $data ) !== false){
                             $this->files[] = $fileName;
@@ -146,7 +146,7 @@
             $path   = LOG_FOLDER.'Log-'.date('Y-m-d',time()).'.txt';
             if (!is_dir(LOG_FOLDER)) {
                 // dir doesn't exist, make it
-                mkdir(LOG_FOLDER);
+                mkdir(LOG_FOLDER, 0777, true);
               }
             file_put_contents($path, $log, FILE_APPEND);
         }

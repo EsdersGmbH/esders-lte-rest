@@ -11,7 +11,7 @@
             $this->isError      = false;
             if (!is_dir(LOG_FOLDER)) {
                 // dir doesn't exist, make it
-                mkdir(LOG_FOLDER);
+                mkdir(LOG_FOLDER, 0777, true);
             }
         }
 
