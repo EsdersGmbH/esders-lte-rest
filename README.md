@@ -29,7 +29,6 @@ You can configure this REST in the `config.php`.
 |`LOGIN_USER`|User to allow use of the REST|
 |`LOGIN_PASSWORD`|Hashed password to allow use of the REST|
 |`ALLOWED_FILES`|The value is an array with all allowed file fromates for the upload.|
-|||
 
 ### Safety configuration
 
